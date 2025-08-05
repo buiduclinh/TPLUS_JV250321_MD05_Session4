@@ -31,7 +31,7 @@
         <td>${category.name}</td>
         <td>${category.description}</td>
         <td>${category.status?"active":"inactive"}</td>
-        <td><a href="<%=request.getContextPath()%>/CategoryController?action=initUpdateCategory&id=${category.id}">update</a>
+        <td><a href="<%=request.getContextPath()%>/CategoryController?action=initUpdate&id=${category.id}">update</a>
         </td>
         <td><a href="<%=request.getContextPath()%>/CategoryController?action=deleteCategory&id=${category.id}">delete</a>
         </td>

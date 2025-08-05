@@ -36,7 +36,7 @@ public class CategoryDAOImpl implements CategoryDAO {
 
     @Override
     public Category getCategoryById(int id) {
-        String sql = "{CALL get_category_by_id(id)}";
+        String sql = "{CALL get_category_by_id(?)}";
         try (Connection connection = DB.getInstance().getConnection();
              CallableStatement stmt = connection.prepareCall(sql);) {
             stmt.setInt(1, id);

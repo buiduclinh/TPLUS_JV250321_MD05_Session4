@@ -42,7 +42,7 @@ public class CategoryController extends HttpServlet {
             int id = Integer.parseInt(request.getParameter("id"));
             Category category = categoryDAO.getCategoryById(id);
             request.setAttribute("category", category);
-            request.getRequestDispatcher("Category/view.jsp").forward(request, response);
+            request.getRequestDispatcher("Category/update.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("Category/error.jsp").forward(request, response);
         }
@@ -64,8 +64,10 @@ public class CategoryController extends HttpServlet {
             }
         } else if (action.equals("updateCategory")) {
             Category category = new Category();
-            category.setName(request.getParameter("name"));
-            category.setDescription(request.getParameter("description"));
+            category.setId(Integer.parseInt(request.getParameter("categoryId")));
+            category.setName(request.getParameter("categoryName"));
+            category.setDescription(request.getParameter("categoryDescription"));
+            category.setStatus(Boolean.parseBoolean(request.getParameter("categoryAct")));
             boolean result = categoryDAO.updateCategory(category);
             if (result) {
                 getAllCategories(request, response);

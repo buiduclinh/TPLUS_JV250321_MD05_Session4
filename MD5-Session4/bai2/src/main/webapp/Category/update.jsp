@@ -13,7 +13,7 @@
 <body>
 <form action="<%=request.getContextPath()%>/CategoryController?action=updateCategory" method="post">
     <label for="categoryId"></label>
-    <input type="text" id="categoryId" name="studentId" value="${category.id}" readonly>
+    <input type="text" id="categoryId" name="categoryId" value="${category.id}" readonly>
     <br>
     <label for="categoryName"></label>
     <input type="text" id="categoryName" name="categoryName" value="${category.name}">
