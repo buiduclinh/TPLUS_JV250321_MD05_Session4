@@ -5,6 +5,7 @@ import com.example.bai2.dao.impl.CategoryDAOImpl;
 import com.example.bai2.model.Category;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/CategoryController")
-public class CategoryController {
+public class CategoryController extends HttpServlet {
     CategoryDAO categoryDAO;
 
     public CategoryController() {
@@ -21,7 +22,7 @@ public class CategoryController {
 
     public void getAllCategories(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Category> categories = categoryDAO.getAllCategories();
-        request.getSession().setAttribute("categories", categories);
+        request.setAttribute("categories", categories);
         request.getRequestDispatcher("Category/view.jsp").forward(request, response);
     }
 
@@ -55,6 +56,7 @@ public class CategoryController {
             category.setName(request.getParameter("name"));
             category.setDescription(request.getParameter("description"));
             boolean result = categoryDAO.addCategory(category);
+            System.out.println(result);
             if (result) {
                 getAllCategories(request, response);
             } else {

@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form action="<%=request.getContextPath()%>/StudentServlet?action=addCategory" method="post">
+<form action="<%=request.getContextPath()%>/CategoryController?action=addCategory" method="post">
 
     <label for="categoryName"></label>
     <input type="text" id="categoryName" name="name" placeholder="Category-Name">
